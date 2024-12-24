@@ -27,7 +27,8 @@
 					if (messageContent) {
 						const docRef = await addDoc(collection(db, 'messages'), {
 							content: messageContent,
-							ip: data.requestIp
+							ip: data.requestIp,
+							time: new Date()
 						});
 						messageSent = true;
 						messageContent = '';
