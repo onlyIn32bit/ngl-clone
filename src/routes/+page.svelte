@@ -1,2 +1,23 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script lang="ts">
+	import { db } from '$lib/firebase';
+	import { addDoc, collection } from 'firebase/firestore';
+
+	let { data } = $props();
+	let messageContent = $state();
+</script>
+
+<svelte:head>
+	<title>Gửi tin nhắn ẩn danh!</title>
+</svelte:head>
+
+<div>
+	<h1>Chào mọi người, mình là bkhang</h1>
+	<h2>{data.requestIp}</h2>
+	<textarea name="" id="" bind:value={messageContent}></textarea>
+	<button
+		class=""
+		onclick={() => {
+			addDoc(collection(db, 'messages'), {});
+		}}>Gửi tin nhắn ẩn danh!</button
+	>
+</div>
